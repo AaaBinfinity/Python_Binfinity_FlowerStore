@@ -244,6 +244,7 @@ def esc():
     alert = input('您确认要退出程序么？（输入"y"确认）：')
     if alert == 'y':
         print('系统退出')
+        return 1
 
 
 # 执行进度条
@@ -281,8 +282,11 @@ while True:
         else:
             Administrators()
     elif choosefirst == '4':
-        esc()
-        break
+        if esc()==1:
+            break
+        else:
+            print("程序继续运行")
+
     else:
         print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
         print("选择无效，请输入正确的序号")
