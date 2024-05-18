@@ -71,7 +71,7 @@ Binfinity FlowerStore 目前通过命令行界面（CLI）与用户交互。我�
 binfinity@qq.com
 ```
 **Wechat：**
-iabc-5305442
+
 ```
-binfinity@qq.com
+iabc-5305442
 ```
