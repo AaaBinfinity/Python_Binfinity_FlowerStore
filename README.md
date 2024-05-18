@@ -9,7 +9,7 @@
 ## 技术栈
 
 - **编程语言**：Python
-- **数据存储**：文本文件（如 `flowers.txt`储存花卉数据、`users.tx`t 储存用户数据和 `Administrators.txt`储存管理员数据），未来计划迁移到数据库
+- **数据存储**：文本文件（如 `flowers.txt`储存花卉数据、`users.txt` 储存用户数据和 `Administrators.txt`储存管理员数据），未来计划迁移到数据库
 - **依赖库**：`json`, `time` 等
 
 ## 主要功能
