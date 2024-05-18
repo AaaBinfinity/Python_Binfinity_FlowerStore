@@ -5,7 +5,7 @@ import os
 class FlowerShop:
     # 初始化方法，创建一个FlowerShop对象时自动调用
     # 参数filename默认为'flowers.txt'，表示花店数据文件的名称
-    def __init__(self, filename='flowers.txt'):
+    def __init__(self, filename='flowers1.txt'):
         self.filename = filename  # 设置文件名属性
         self.flowers = self.load_data()  # 加载花店数据，并存储在flowers属性中
 
