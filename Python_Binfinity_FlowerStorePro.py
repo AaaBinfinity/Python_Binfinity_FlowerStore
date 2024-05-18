@@ -1,6 +1,7 @@
 import time  # 引入设计进度条的相关库
 
 # 初始化
+
 # 设置起始时间戳
 start = time.perf_counter()
 # 全局定义：
@@ -18,21 +19,22 @@ try:
 except FileNotFoundError:
     print(
         """
-========================
+----========================----
 未找到仓库
-========================
+----========================----
         """
     )
 else:
-    contents = file.readlines()  # 将文件中的所有行都读入contents中
+    contents = file.readlines()  # 将文件中的所有行都读入contents列表中
     # 将默认花卉信息导入至花卉列表：
     flower = []
     for content in contents:
         flower.append(content[3:-1])
     tempsum = int(len(flower) / lt)
 
+
 # 蜜汁进度条：
-def Progress_bar ():
+def Progress_bar():
     scale = 50
     print('加载中'.center(scale // 2, '-'))
     for i in range(scale + 1):
@@ -43,6 +45,15 @@ def Progress_bar ():
         print('\r{:^3.0f}%[{}->{}]{:.2f}s'.format(c, a, b, dur), end='')
         time.sleep(0.1)
     print('\n' + '加载完成'.center(scale // 2, '-'))
+    print(
+        """
+    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+
+    の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
+
+    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+        """
+    )
 
 
 def logup():
@@ -100,3 +111,6 @@ def logup():
                     shutdown = 0  # 同上，为0触发
                     return shutdown
             f.close()
+
+
+Progress_bar()
