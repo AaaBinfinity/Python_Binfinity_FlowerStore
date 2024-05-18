@@ -187,55 +187,68 @@ def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多
 
         f.close()
 
+# 用户菜单
+def Users():
+    print(
+     """
+！！！=============！！=消费者登录=！！==============！！！
+      1.显示所有鲜花    2.购买鲜花      3.搜索鲜花        
+    """
+    )
+    # 消费者选择
+    choose = input('请输入您选择的序号：')
+
+
 # 管理员菜单
 def Administrators():
     print(
         """
-！！！=========================！！=管理员登录=！！============================！！！    
+！！！=============！！=====！！=========！！=管理员登录=！！===========！！=====！！==============！！！    
 
-1. 查看库存   2. 添加鲜花   3. 购买鲜花     4. 更新鲜花信息    5. 删除鲜花   6.添加管理员             
+1. 查看库存   2. 添加鲜花   3. 购买鲜花     4. 更新鲜花信息    5. 删除鲜花   6.添加管理员   7.搜索鲜花          
         """
     )
     # 用户选择2
-    choose2 = int(input('请输入您选择的序号：'))
-    if choose2 == 1:
+    choose2 = input('请输入您选择的序号：')
+    if choose2 == '1':
         print("▂﹍▂﹍▂﹍查看库存▂﹍▂﹍▂﹍▂﹍▂  ")
-    elif choose2 == 2:
+    elif choose2 == '2':
         print("▂﹍▂﹍▂﹍添加鲜花▂﹍▂﹍▂﹍▂﹍▂ ")
-    elif choose2 == 3:
+    elif choose2 == '3':
         print("▂﹍▂﹍▂﹍购买鲜花▂﹍▂﹍▂﹍▂﹍▂")
-    elif choose2 == 4:
+    elif choose2 == '4':
         print("▂﹍▂﹍▂﹍更新鲜花▂﹍▂﹍▂﹍▂﹍▂ ")
-    elif choose2 == 5:
+    elif choose2 == '5':
         print("▂﹍▂﹍▂﹍删除鲜花▂﹍▂﹍▂﹍▂﹍▂ ")
-    elif choose2 == 6:
+    elif choose2 == '6':
         print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
         Administrators_logup()
     else:
         print()
         print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
         print("选择无效，请输入正确的序号")
+
+
 # 退出程序代码
-def esc ():
+def esc():
     alert = input('您确认要退出程序么？（输入"y"确认）：')
     if alert == 'y':
         print('系统退出')
 
 
-
 # 执行进度条
-# Progress_bar()
+Progress_bar()
 
 # 程序主循环：
 while True:
 
     # 首页：
     print(
-"""
-" ……………·～·…οΟ○ の ○Οο…·～·…………… "
-        
-1.注册, 2.登录,3.管理员登录,4.退出程序
-""")
+        """
+        " ……………·～·…οΟ○ の ○Οο…·～·…………… "
+                
+        1.注册, 2.登录,3.管理员登录,4.退出程序
+        """)
     # 用户选择1
     choosefirst = input('请输入您选择的序号：')
     if choosefirst == '1':
@@ -247,9 +260,10 @@ while True:
 
     elif choosefirst == '2':
         print("▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂  ")
-
         if login(1) == 0:
             break
+        else:
+            Users()
         print(".*""*.*""*.*""*.*""**""*.*""**""*.*  ")
     elif choosefirst == '3':
         if Administrators_login(1) == 0:
