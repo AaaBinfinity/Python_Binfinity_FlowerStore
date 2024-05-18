@@ -1,6 +1,6 @@
 import time  # 引入设计进度条的相关库
 
-# 初始化：
+# 初始化
 # 设置起始时间戳
 start = time.perf_counter()
 # 全局定义：
@@ -19,10 +19,10 @@ except FileNotFoundError:
     print(
         """
 ========================
-未找到到仓库
+未找到仓库
 ========================
         """
-          )
+    )
 else:
     contents = file.readlines()  # 将文件中的所有行都读入contents中
     # 将默认花卉信息导入至花卉列表：
@@ -30,6 +30,19 @@ else:
     for content in contents:
         flower.append(content[3:-1])
     tempsum = int(len(flower) / lt)
+
+# 蜜汁进度条：
+def Progress_bar ():
+    scale = 50
+    print('加载中'.center(scale // 2, '-'))
+    for i in range(scale + 1):
+        a = '*' * i
+        b = '.' * (scale - i)
+        c = (i / scale) * 100
+        dur = time.perf_counter() - start
+        print('\r{:^3.0f}%[{}->{}]{:.2f}s'.format(c, a, b, dur), end='')
+        time.sleep(0.1)
+    print('\n' + '加载完成'.center(scale // 2, '-'))
 
 
 def logup():
