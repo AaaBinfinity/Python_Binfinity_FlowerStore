@@ -4,26 +4,32 @@ import time  # 引入设计进度条的相关库
 # 设置起始时间戳
 start = time.perf_counter()
 # 全局定义：
-# 学生信息总类"次数"：listtime = lt
+# 花卉信息总类"次数"：listtime = lt
 lt = 3
-# 学生人数为：sum
+# 花卉总数为：sum
 sum = 0
 # 循环介质置零：i
 i = 0
 # 内嵌默认管理员账户
-defaultuser = {'name': 'admin', 'passwd': 'passwd'}  # 设置默认管理员账户
-# 检索现有的学生内容：
-try:  # try...except...else为一种书写格式，用以检测
-    file = open('default.txt', "r", encoding='utf-8')
+defaultuser = {'name': 'Binfinity', 'passwd': '050328Cb'}  # 设置默认管理员账户
+# 检索现有的鲜花内容：
+try:
+    file = open('flowers.txt', "r", encoding='utf-8')
 except FileNotFoundError:
-    print("The Student Managerment Is Empty Now")
+    print(
+        """
+========================
+未找到到仓库
+========================
+        """
+          )
 else:
     contents = file.readlines()  # 将文件中的所有行都读入contents中
-    # 将默认学生信息导入至学生列表：
-    student = []
+    # 将默认花卉信息导入至花卉列表：
+    flower = []
     for content in contents:
-        student.append(content[3:-1])
-    tempsum = int(len(student) / lt)
+        flower.append(content[3:-1])
+    tempsum = int(len(flower) / lt)
 
 
 def logup():
