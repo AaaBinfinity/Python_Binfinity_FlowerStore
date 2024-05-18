@@ -11,8 +11,8 @@ lt = 3
 sum = 0
 # 循环介质置零：i
 i = 0
-# 内嵌默认管理员账户
-defaultuser = {'name': 'Binfinity', 'passwd': '050328Cb'}  # 设置默认管理员账户
+# 内嵌默认账户（和管理员账户）
+defaultuser = {'name': 'Binfinity', 'passwd': '050328'}
 # 检索现有的鲜花内容：
 try:
     file = open('flowers.txt', "r", encoding='utf-8')
