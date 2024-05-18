@@ -196,11 +196,11 @@ def Users():
     )
     # 消费者选择
     choose = input('请输入您选择的序号：')
-    if choose == 1:
+    if choose == "1":
         print("▂﹍▂﹍▂﹍查看所有花卉▂﹍▂﹍▂﹍▂﹍▂  ")
-    elif choose == 2:
+    elif choose == "2":
         print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
-    elif choose == 3:
+    elif choose == "3":
         print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂")
     else:
            print()
