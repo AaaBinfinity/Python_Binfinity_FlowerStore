@@ -68,6 +68,6 @@ Binfinity FlowerStore 目前通过命令行界面（CLI）与用户交互。我�
 **Email：**
 
 ```
-Binfinity@qq.com
+binfinity@qq.com
 ```
 
