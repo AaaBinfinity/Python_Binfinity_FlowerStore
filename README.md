@@ -1,5 +1,5 @@
 # Binfinity FlowerStore
-这是俺滴python期末课设捏~
+这是俺滴python期末课设捏(大一)~
 ## 项目介绍
 
 **Binfinity FlowerStore** 是一个基于 Python 编写的花卉商店销售和管理系统。
