@@ -99,6 +99,7 @@ class FlowerShop:
 
 
 # 创建一个Shop实例
+
 shop = FlowerShop()
 
 
