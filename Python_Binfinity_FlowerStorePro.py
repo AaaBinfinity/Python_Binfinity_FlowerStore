@@ -250,7 +250,6 @@ while True:
 
         if login(1) == 0:
             break
-
         print(".*""*.*""*.*""*.*""**""*.*""**""*.*  ")
     elif choosefirst == '3':
         if Administrators_login(1) == 0:
