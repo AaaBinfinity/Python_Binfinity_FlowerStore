@@ -13,24 +13,9 @@ sum = 0
 i = 0
 # 内嵌默认账户（和管理员账户）
 defaultuser = {'name': 'Binfinity', 'passwd': '050328'}
-# 检索现有的花卉内容：
-try:
-    file = open('flowers.txt', "r", encoding='utf-8')
-except FileNotFoundError:
-    print(
-        """
-----========================----
-            未找到仓库
-----========================----
-        """
-    )
-else:
-    contents = file.readlines()  # 将文件中的所有行都读入contents列表中
-    # 将默认花卉信息导入至花卉列表：
-    flower = []
-    for content in contents:
-        flower.append(content[3:-1])
-    tempsum = int(len(flower) / lt)
+
+# 全局变量，用于存储花卉信息
+flowers = []
 
 
 def load_flowers(filename='flowers.txt'):
@@ -55,23 +40,6 @@ def save_flowers(filename='flowers.txt'):
     with open(filename, 'w', encoding='utf-8') as file:
         for flower in flowers:
             file.write(f"{flower['name']},{flower['price']},{flower['stock']},{flower['meaning']}\n")
-
-
-def view_stock():
-    """查看库存"""
-    for flower in flowers:
-        print(f"花卉名称：{flower['name']}, 库存：{flower['stock']}")
-
-
-def add_flower(name, price, stock, meaning):
-    """添加花卉"""
-    flowers.append({
-        'name': name,
-        'price': price,
-        'stock': stock,
-        'meaning': meaning
-    })
-    save_flowers()
 
 
 def buy_flower():
@@ -114,43 +82,79 @@ def buy_flower():
             break  # 如果用户不想继续购买，则退出循环
 
 
-def update_flower(name, price=None, stock=None, meaning=None):
+def view_stock():
+    """查看库存"""
+    for flower in flowers:
+        print(f"花卉名称：{flower['name']}, 库存：{flower['stock']}")
+
+
+def add_flower(name, price, stock, meaning):
+    """添加花卉"""
+    flowers.append({
+        'name': name,
+        'price': price,
+        'stock': stock,
+        'meaning': meaning
+    })
+    save_flowers()
+
+
+def update_flower():
     """更新某个花卉信息，并在更新后进行比对确认"""
+    global flowers
+    flower_name = input("请输入要更新的花卉名称：")
     flower_found = False
     old_info = {}
 
     # 查找花卉并保存旧信息
     for flower in flowers:
-        if flower['name'] == name:
+        if flower['name'] == flower_name:
             flower_found = True
             old_info = flower.copy()  # 保存旧的花卉信息
             break
 
             # 如果没有找到花卉，则直接返回
     if not flower_found:
-        print(f"未找到花卉：{name}")
+        print(f"未找到花卉：{flower_name}")
         return
+
+        # 询问用户是否要更新价格、库存、花语
+    new_price = None
+    new_stock = None
+    new_meaning = None
+
+    if input("是否更新价格？(y/n) ").lower() == 'y':
+        new_price = float(input("请输入新的价格："))
+
+    if input("是否更新库存？(y/n) ").lower() == 'y':
+        new_stock = int(input("请输入新的库存数量："))
+
+    if input("是否更新花语？(y/n) ").lower() == 'y':
+        new_meaning = input("请输入新的花语：")
 
         # 更新花卉信息
     for flower in flowers:
-        if flower['name'] == name:
-            if price is not None:
-                flower['price'] = price
-            if stock is not None:
-                flower['stock'] = stock
-            if meaning is not None:
-                flower['meaning'] = meaning
+        if flower['name'] == flower_name:
+            if new_price is not None:
+                flower['price'] = new_price
+            if new_stock is not None:
+                flower['stock'] = new_stock
+            if new_meaning is not None:
+                flower['meaning'] = new_meaning
             break  # 找到并更新后退出循环
 
-    # 保存更新后的花卉信息到文件
+    # 保存更新后的花卉信息到文件（假设已实现save_flowers函数）
     save_flowers()
 
     # 显示更新前后的信息比对
-    print(f"花卉信息已更新：{name}")
+    print(f"花卉信息已更新：{flower_name}")
     print("更新前信息：")
     print(f"名称：{old_info['name']}, 单价：{old_info['price']}, 库存：{old_info['stock']}, 花语：{old_info['meaning']}")
+    # 获取更新后的花卉信息用于显示
+    updated_flower = next((flower for flower in flowers if flower['name'] == flower_name), None)
     print("更新后信息：")
-    print(f"名称：{flower['name']}, 单价：{flower['price']}, 库存：{flower['stock']}, 花语：{flower['meaning']}")
+    print(
+        f"名称：{updated_flower['name']}, 单价：{updated_flower['price']}, 库存：{updated_flower['stock']}, 花语：{updated_flower['meaning']}")
 
 def delete_flower(name):
     """删除某个花卉"""
@@ -165,30 +169,36 @@ def delete_flower(name):
     print(f"未找到花卉：{name}")
 
 
-def search_flower(keyword):
-    """搜索某个花卉（通过花名或者花语）"""
+def search_flower():
+    """搜索某个花卉（通过花名或者花语），在函数体内请求用户输入关键词"""
+    keyword = input("请输入要搜索的花卉名称或花语关键词：")
     results = []
     for flower in flowers:
         if keyword in flower['name'] or keyword in flower['meaning']:
             results.append(flower)
     if results:
+        print(f"找到与关键词'{keyword}'匹配的花卉：")
         for flower in results:
             print(f"花卉名称：{flower['name']}, 花语：{flower['meaning']}")
     else:
         print(f"未找到与关键词'{keyword}'匹配的花卉。")
 
-    def view_all_products():
-        """查看所有商品（花卉）的详细信息"""
-        if flowers:
-            print("所有花卉的详细信息如下：")
-            for flower in flowers:
-                print(f"花卉名称：{flower['name']}")
-                print(f"花卉单价：{flower['price']} 元")
-                print(f"花卉库存：{flower['stock']}")
-                print(f"花语：{flower['meaning']}")
-                print("=" * 30)  # 分隔线，使信息更清晰
-        else:
-            print("仓库中没有花卉信息。")
+    # 调用函数，此时不需要传递参数
+
+
+
+def view_all_products():
+    """查看所有商品（花卉）的详细信息"""
+    if flowers:
+        print("所有花卉的详细信息如下：")
+        for flower in flowers:
+            print(f"花卉名称：{flower['name']}")
+            print(f"花卉单价：{flower['price']} 元")
+            print(f"花卉库存：{flower['stock']}")
+            print(f"花语：{flower['meaning']}")
+            print("=" * 30)  # 分隔线，使信息更清晰
+    else:
+        print("仓库中没有花卉信息。")
 
 
 # 蜜汁进度条：
@@ -416,9 +426,10 @@ def esc():
         return 1
 
 
+load_flowers()  # 加载花卉信息
 # 执行进度条
 # Progress_bar()
-
+update_flower()
 # 程序主循环：
 while True:
 
@@ -460,3 +471,4 @@ while True:
     else:
         print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
         print("选择无效，请输入正确的序号")
+
