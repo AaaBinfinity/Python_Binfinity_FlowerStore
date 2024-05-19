@@ -44,6 +44,7 @@ def save_flowers(filename='flowers.txt'):
 
 def buy_flower():
     """购买花卉，并提供继续购买的选项"""
+    load_flowers()
     while True:  # 无限循环，直到用户选择不再购买
         name = input("请输入您想购买的花卉名称（或输入'退出'结束购买）：")
         if name.lower() == '退出':  # 提供退出的选项
@@ -203,25 +204,17 @@ def view_all_products():
 
 # 蜜汁进度条：
 def Progress_bar():
-    scale = 50
+    scale = 25
     print('加载中'.center(scale // 2, '-'))
     for i in range(scale + 1):
-        a = '*' * i
-        b = '.' * (scale - i)
+        a = '****' * i
+        b = '....' * (scale - i)
         c = (i / scale) * 100
         dur = time.perf_counter() - start
         print('\r{:^3.0f}%[{}->{}]{:.2f}s'.format(c, a, b, dur), end='')
         time.sleep(0.1)
-    print('\n' + '初始化完成'.center(scale // 2, '-'))
-    print(
-        """
-        ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
-        
-        の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
-        
-        ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
-        """
-    )
+    print('\n' + '加载完成'.center(scale // 2, '-'))
+
 
 
 # 注册管理员
@@ -356,6 +349,13 @@ def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多
 
         f.close()
 
+# 退出程序代码
+def esc():
+    alert = input('您确认要退出程序么？（输入"y"确认）：')
+    if alert == 'y':
+        print('系统退出')
+        return 1
+
 
 # 用户菜单
 def Users():
@@ -369,16 +369,27 @@ def Users():
     choose = input('请输入您选择的序号：')
     if choose == "1":
         print("▂﹍▂﹍▂﹍查看所有花卉▂﹍▂﹍▂﹍▂﹍▂  ")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose == "2":
         print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
+
+        # 执行进度条
+        # Progress_bar()
     elif choose == "3":
         print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose == "4":
         esc()
     else:
         print()
         print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
         print("选择无效，请输入正确的序号")
+
+
 
 
 # 管理员菜单
@@ -394,19 +405,40 @@ def Administrators():
     choose2 = input('请输入您选择的序号：')
     if choose2 == '1':
         print("▂﹍▂﹍▂﹍查看库存▂﹍▂﹍▂﹍▂﹍▂  ")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose2 == '2':
         print("▂﹍▂﹍▂﹍添加花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose2 == '3':
         print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose2 == '4':
         print("▂﹍▂﹍▂﹍更新花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose2 == '5':
         print("▂﹍▂﹍▂﹍删除花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose2 == '6':
         print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
+
+        # 执行进度条
+        # Progress_bar()
         Administrators_logup()
     elif choose2 == "7":
         print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+        load_flowers()  # 加载花卉信息
+        # 执行进度条
+        # Progress_bar()
     elif choose2 == "8":
         esc()
         return 1
@@ -416,20 +448,18 @@ def Administrators():
         print("选择无效，请输入正确的序号")
 
 
-# 是否保存更改
-
-# 退出程序代码
-def esc():
-    alert = input('您确认要退出程序么？（输入"y"确认）：')
-    if alert == 'y':
-        print('系统退出')
-        return 1
-
-
 load_flowers()  # 加载花卉信息
 # 执行进度条
-# Progress_bar()
-update_flower()
+Progress_bar()
+print(
+    """
+    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+
+    の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
+
+    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+    """
+)
 # 程序主循环：
 while True:
 
@@ -471,4 +501,3 @@ while True:
     else:
         print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
         print("选择无效，请输入正确的序号")
-
