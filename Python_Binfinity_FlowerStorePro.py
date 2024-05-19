@@ -44,18 +44,19 @@ def Progress_bar():
         dur = time.perf_counter() - start
         print('\r{:^3.0f}%[{}->{}]{:.2f}s'.format(c, a, b, dur), end='')
         time.sleep(0.1)
-    print('\n' + '加载完成'.center(scale // 2, '-'))
+    print('\n' + '初始化完成'.center(scale // 2, '-'))
     print(
         """
-    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
-
-    の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
-
-    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+        ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+        
+        の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
+        
+        ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
         """
     )
 
 
+# 注册管理员
 def Administrators_logup():
     Administrators = []  # 使用列表来存储所有用户信息
     with open("Administrators.txt", 'r', encoding='utf-8') as f:
@@ -155,6 +156,7 @@ def logup():
             return  # 注册成功后直接退出函数，不再继续循环
     print('注册失败，已达到最大尝试次数')
 
+
 # 用户登录代码
 def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多强制退出
     with open("users.txt", 'r+', encoding='utf-8') as f:
@@ -186,12 +188,13 @@ def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多
 
         f.close()
 
+
 # 用户菜单
 def Users():
     print(
-     """
-！！！=============！！=消费者登录=！！==============！！！
-      1.显示所有花卉    2.购买花卉      3.搜索花卉      
+        """
+！！！=========！！==！====！！=消费者登录=！！=====！====！！=====！！！
+      1.显示所有花卉    2.购买花卉      3.搜索花卉     4.退出登录 
     """
     )
     # 消费者选择
@@ -202,18 +205,21 @@ def Users():
         print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
     elif choose == "3":
         print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂")
+    elif choose == "4":
+        esc()
     else:
-           print()
-           print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
-           print("选择无效，请输入正确的序号")
+        print()
+        print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
+        print("选择无效，请输入正确的序号")
+
 
 # 管理员菜单
 def Administrators():
     print(
         """
-！！！=============！！=====！！=========！！=管理员登录=！！===========！！=====！！==============！！！    
+！！！=============！！=====！！=========！！=管理员登录=！！===========！！=====！！=======================！！！    
 
-1. 查看库存   2. 添加花卉   3. 购买花卉     4. 更新花卉信息    5. 删除花卉   6.添加管理员   7.搜索花卉          
+1. 查看库存   2. 添加花卉   3. 购买花卉     4. 更新花卉信息    5. 删除花卉   6.添加管理员   7.搜索花卉    8.退出程序           
         """
     )
     # 用户选择2
@@ -231,12 +237,25 @@ def Administrators():
     elif choose2 == '6':
         print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
         Administrators_logup()
-    elif choose2 ==7:
+    elif choose2 == "7":
         print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+    elif choose2 == "8":
+        save()
+        esc()
+        return 1
     else:
         print()
         print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
         print("选择无效，请输入正确的序号")
+
+
+# 是否保存更改
+def save():
+    alert = input('是否保存修改(输入“是”以保存)：')
+    # if alert == '是':
+    #     coveroutput()
+    #     alloutput('default.txt')
+    #
 
 
 # 退出程序代码
@@ -245,6 +264,26 @@ def esc():
     if alert == 'y':
         print('系统退出')
         return 1
+
+# ▂﹍▂﹍▂﹍查看所有花卉▂﹍▂﹍▂﹍▂﹍▂
+
+
+
+
+
+# "▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂"
+
+
+
+
+
+# "▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂"
+
+
+
+
+
+
 
 
 # 执行进度条
@@ -255,11 +294,11 @@ while True:
 
     # 首页：
     print(
-"""
+        """
 " ……………·～·…οΟ○ の ○Οο…·～·…………… "
-        
+
 1.注册, 2.登录,3.管理员登录,4.退出程序
-""")
+         """)
     # 用户选择1
     choosefirst = input('请输入您选择的序号：')
     if choosefirst == '1':
@@ -279,10 +318,11 @@ while True:
     elif choosefirst == '3':
         if Administrators_login(1) == 0:
             break
-        else:
-            Administrators()
+        elif Administrators() == 1:
+            break
+
     elif choosefirst == '4':
-        if esc()==1:
+        if esc() == 1:
             break
         else:
             print("程序继续运行")
