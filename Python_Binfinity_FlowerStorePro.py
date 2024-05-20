@@ -215,8 +215,6 @@ def Progress_bar():
         time.sleep(0.1)
     print('\n' + '加载完成'.center(scale // 2, '-'))
 
-
-
 # 注册管理员
 def Administrators_logup():
     Administrators = []  # 使用列表来存储所有用户信息
@@ -422,23 +420,26 @@ def Administrators():
         print("▂﹍▂﹍▂﹍更新花卉▂﹍▂﹍▂﹍▂﹍▂ ")
         load_flowers()  # 加载花卉信息
         # 执行进度条
-        # Progress_bar()
+        Progress_bar()
+        update_flower()
     elif choose2 == '5':
         print("▂﹍▂﹍▂﹍删除花卉▂﹍▂﹍▂﹍▂﹍▂ ")
         load_flowers()  # 加载花卉信息
         # 执行进度条
-        # Progress_bar()
+        Progress_bar()
+        delete_flower(name = input("请输入您想要删除的花卉："))
     elif choose2 == '6':
         print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
 
         # 执行进度条
-        # Progress_bar()
+        Progress_bar()
         Administrators_logup()
     elif choose2 == "7":
         print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
         load_flowers()  # 加载花卉信息
         # 执行进度条
-        # Progress_bar()
+        Progress_bar()
+        search_flower()
     elif choose2 == "8":
         esc()
         return 1
