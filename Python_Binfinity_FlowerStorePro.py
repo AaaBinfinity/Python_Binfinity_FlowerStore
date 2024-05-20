@@ -157,6 +157,7 @@ def update_flower():
     print(
         f"名称：{updated_flower['name']}, 单价：{updated_flower['price']}, 库存：{updated_flower['stock']}, 花语：{updated_flower['meaning']}")
 
+
 def delete_flower(name):
     """删除某个花卉"""
     for i, flower in enumerate(flowers):
@@ -187,7 +188,6 @@ def search_flower():
     # 调用函数，此时不需要传递参数
 
 
-
 def view_all_products():
     """查看所有商品（花卉）的详细信息"""
     if flowers:
@@ -195,8 +195,10 @@ def view_all_products():
         for flower in flowers:
             print(f"花卉名称：{flower['name']}")
             print(f"花卉单价：{flower['price']} 元")
-            print(f"花卉库存：{flower['stock']}")
+            # print(f"花卉库存：{flower['stock']}")
             print(f"花语：{flower['meaning']}")
+            print("=" * 30)  # 分隔线，使信息更清晰
+            print("全部花卉展示完毕！")
             print("=" * 30)  # 分隔线，使信息更清晰
     else:
         print("仓库中没有花卉信息。")
@@ -214,9 +216,12 @@ def Progress_bar():
         print('\r{:^3.0f}%[{}->{}]{:.2f}s'.format(c, a, b, dur), end='')
         time.sleep(0.1)
     print('\n' + '加载完成'.center(scale // 2, '-'))
+    print("=" * 30)  # 分隔线，使信息更清晰
+
 
 # 注册管理员
 def Administrators_logup():
+    print("=" * 30)  # 分隔线，使信息更清晰
     Administrators = []  # 使用列表来存储所有用户信息
     with open("Administrators.txt", 'r', encoding='utf-8') as f:
         for line in f:
@@ -252,6 +257,7 @@ def Administrators_logup():
 
 # 管理员用户登录代码
 def Administrators_login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多强制退出
+    print("=" * 30)  # 分隔线，使信息更清晰
     with open("Administrators.txt", 'r+', encoding='utf-8') as f:
         getinformation = f.readlines()  # 将文件的所有行读入到getinformation中
         tempAdministratorslist = []  # 创建一个临时列表用来存放所有的“字典”形式的字符串
@@ -283,6 +289,7 @@ def Administrators_login(shutdown):  # shutdown作为强制关闭词，用于输
 
 
 def logup():
+    print("=" * 30)  # 分隔线，使信息更清晰
     users = []  # 使用列表来存储所有用户信息
     with open("users.txt", 'r', encoding='utf-8') as f:
         for line in f:
@@ -318,6 +325,7 @@ def logup():
 
 # 用户登录代码
 def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多强制退出
+    print("=" * 30)  # 分隔线，使信息更清晰
     with open("users.txt", 'r+', encoding='utf-8') as f:
         getinformation = f.readlines()  # 将文件的所有行读入到getinformation中
         tempuserslist = []  # 创建一个临时列表用来存放所有的“字典”形式的字符串
@@ -347,6 +355,7 @@ def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多
 
         f.close()
 
+
 # 退出程序代码
 def esc():
     alert = input('您确认要退出程序么？（输入"y"确认）：')
@@ -357,96 +366,117 @@ def esc():
 
 # 用户菜单
 def Users():
-    print(
+    while True:
+        print(
+            """
+    ！！！=========！！==！====！！=消费者登录=！！=====！====！！=====！！！
+          1.显示所有花卉    2.购买花卉      3.搜索花卉     4.退出登录 
         """
-！！！=========！！==！====！！=消费者登录=！！=====！====！！=====！！！
-      1.显示所有花卉    2.购买花卉      3.搜索花卉     4.退出登录 
-    """
-    )
-    # 消费者选择
-    choose = input('请输入您选择的序号：')
-    if choose == "1":
-        print("▂﹍▂﹍▂﹍查看所有花卉▂﹍▂﹍▂﹍▂﹍▂  ")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        # Progress_bar()
-    elif choose == "2":
-        print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
+        )
+        # 消费者选择
+        choose = input('请输入您选择的序号：')
+        if choose == "1":
+            print("▂﹍▂﹍▂﹍查看所有花卉▂﹍▂﹍▂﹍▂﹍▂  ")
 
-        # 执行进度条
-        # Progress_bar()
-    elif choose == "3":
-        print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        # Progress_bar()
-    elif choose == "4":
-        esc()
-    else:
-        print()
-        print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
-        print("选择无效，请输入正确的序号")
+            # 执行进度条
+            Progress_bar()
+            view_all_products()
+            print("=" * 30)  # 分隔线，使信息更清晰
+        elif choose == "2":
+            print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
 
+            # 执行进度条
+            Progress_bar()
+            buy_flower()
+            print("=" * 30)  # 分隔线，使信息更清晰
+        elif choose == "3":
+            print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂")
 
+            # 执行进度条
+            Progress_bar()
+            search_flower()
+            print("=" * 30)  # 分隔线，使信息更清晰
+        elif choose == "4":
+            print("=" * 30)  # 分隔线，使信息更清晰
+            if esc() == 1:
+                break
+
+        else:
+            print()
+            print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
+            print("选择无效，请输入正确的序号")
 
 
 # 管理员菜单
 def Administrators():
-    print(
-        """
-！！！=============！！=====！！=========！！=管理员登录=！！===========！！=====！！=======================！！！    
+    while True:
+        print(
+            """
+    ！！！=============！！=====！！=========！！=管理员登录=！！===========！！=====！！=======================！！！    
+    
+    1. 查看库存   2. 添加花卉   3. 购买花卉     4. 更新花卉信息    5. 删除花卉   6.添加管理员   7.搜索花卉    8.退出程序           
+            """
+        )
+        # 用户选择2
+        choose2 = input('请输入您选择的序号：')
+        if choose2 == '1':
+            print("▂﹍▂﹍▂﹍查看库存▂﹍▂﹍▂﹍▂﹍▂  ")
 
-1. 查看库存   2. 添加花卉   3. 购买花卉     4. 更新花卉信息    5. 删除花卉   6.添加管理员   7.搜索花卉    8.退出程序           
-        """
-    )
-    # 用户选择2
-    choose2 = input('请输入您选择的序号：')
-    if choose2 == '1':
-        print("▂﹍▂﹍▂﹍查看库存▂﹍▂﹍▂﹍▂﹍▂  ")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        # Progress_bar()
-    elif choose2 == '2':
-        print("▂﹍▂﹍▂﹍添加花卉▂﹍▂﹍▂﹍▂﹍▂ ")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        # Progress_bar()
-    elif choose2 == '3':
-        print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        # Progress_bar()
-    elif choose2 == '4':
-        print("▂﹍▂﹍▂﹍更新花卉▂﹍▂﹍▂﹍▂﹍▂ ")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        Progress_bar()
-        update_flower()
-    elif choose2 == '5':
-        print("▂﹍▂﹍▂﹍删除花卉▂﹍▂﹍▂﹍▂﹍▂ ")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        Progress_bar()
-        delete_flower(name = input("请输入您想要删除的花卉："))
-    elif choose2 == '6':
-        print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
+            # 执行进度条
+            Progress_bar()
+            view_stock()
+        elif choose2 == '2':
+            print("▂﹍▂﹍▂﹍添加花卉▂﹍▂﹍▂﹍▂﹍▂ ")
 
-        # 执行进度条
-        Progress_bar()
-        Administrators_logup()
-    elif choose2 == "7":
-        print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
-        load_flowers()  # 加载花卉信息
-        # 执行进度条
-        Progress_bar()
-        search_flower()
-    elif choose2 == "8":
-        esc()
-        return 1
-    else:
-        print()
-        print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
-        print("选择无效，请输入正确的序号")
+            # 执行进度条
+            Progress_bar()
+            print("！！！=============！！=====！！======")
+            name = input("请输入您想添加的花卉名称")
+            print("！！！=============！！=====！！======")
+            price = input("请输入您想添加的花卉单价")
+            print("！！！=============！！=====！！======")
+            stock = input("请输入您想添加的花卉库存")
+            print("！！！=============！！=====！！======")
+            meaning = input("请输入您想添加的花卉花语")
+            print("！！！=============！！=====！！======")
+            add_flower(name=name, price=price, stock=stock, meaning=meaning)
+            print("完成添加！！")
+            print("！！！=============！！=====！！======")
+        elif choose2 == '3':
+            print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
+            # 执行进度条
+            Progress_bar()
+            buy_flower()
+            print("！！！=============！！=====！！======")
+        elif choose2 == '4':
+            print("▂﹍▂﹍▂﹍更新花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+            # 执行进度条
+            Progress_bar()
+            update_flower()
+        elif choose2 == '5':
+            print("▂﹍▂﹍▂﹍删除花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+
+            # 执行进度条
+            Progress_bar()
+            delete_flower(name=input("请输入您想要删除的花卉："))
+        elif choose2 == '6':
+            print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
+            # 执行进度条
+            Progress_bar()
+            Administrators_logup()
+        elif choose2 == "7":
+            print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
+
+            # 执行进度条
+            Progress_bar()
+            search_flower()
+        elif choose2 == "8":
+            esc()
+            return 1
+        else:
+            print()
+            print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
+            print("选择无效，请输入正确的序号")
 
 
 load_flowers()  # 加载花卉信息
@@ -490,8 +520,8 @@ while True:
     elif choosefirst == '3':
         if Administrators_login(1) == 0:
             break
-        elif Administrators() == 1:
-            break
+        else:
+            Administrators()
 
     elif choosefirst == '4':
         if esc() == 1:
