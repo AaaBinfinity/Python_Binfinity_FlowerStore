@@ -44,11 +44,14 @@ def save_flowers(filename='flowers.txt'):
 
 def buy_flower():
     """购买花卉，并提供继续购买的选项"""
-    load_flowers()
+
+    # 在函数开始时加载花卉信息，而不是在每次购买前加载
+
     while True:  # 无限循环，直到用户选择不再购买
         name = input("请输入您想购买的花卉名称（或输入'退出'结束购买）：")
         if name.lower() == '退出':  # 提供退出的选项
             print("感谢您的购买，欢迎下次光临！")
+            save_flowers()  # 在退出前保存最新的花卉信息
             break  # 退出循环
 
         quantity_str = input("请输入您想购买的数量：")
@@ -68,7 +71,7 @@ def buy_flower():
                     total_price = flower['price'] * quantity
                     flower['stock'] -= quantity
                     print(f"购买成功！您购买了{quantity}朵{name}，总价为{total_price}元。")
-                    save_flowers()
+                    save_flowers()  # 购买成功后立即保存最新的花卉信息
                     break  # 找到并购买后退出循环
                 else:
                     print(f"库存不足，无法购买{quantity}朵{name}。")
@@ -80,6 +83,7 @@ def buy_flower():
         continue_purchase = input("您是否想继续购买其他花卉？（是/否）：").strip().lower()
         if continue_purchase != '是':
             print("感谢您的购买，欢迎下次光临！")
+            save_flowers()  # 在退出前保存最新的花卉信息
             break  # 如果用户不想继续购买，则退出循环
 
 
@@ -198,10 +202,11 @@ def view_all_products():
             # print(f"花卉库存：{flower['stock']}")
             print(f"花语：{flower['meaning']}")
             print("=" * 30)  # 分隔线，使信息更清晰
-            print("全部花卉展示完毕！")
+
             print("=" * 30)  # 分隔线，使信息更清晰
     else:
         print("仓库中没有花卉信息。")
+    print("全部花卉展示完毕！")
 
 
 # 蜜汁进度条：
