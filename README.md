@@ -87,15 +87,16 @@ Binfinity FlowerStore 目前通过命令行界面（CLI）与用户交互。我�
 
 1. **克隆仓库**
     ```bash
-    git clone https://github.com/yourusername/Binfinity-FlowerStore.git
+    git clone https://github.com/AaaBinfinity/Python_Binfinity_FlowerStore.git
     cd Binfinity-FlowerStore
     ```
 
 2. **运行程序**
+    
     ```bash
     python main.py
     ```
-
+    
 3. **功能选择**
     - 启动程序后，您将看到一个主菜单，可以选择注册、登录、管理员登录或退出程序。
 
@@ -147,11 +148,11 @@ Binfinity FlowerStore 目前通过命令行界面（CLI）与用户交互。我�
 
 **Email：**
 
-```
+```bash
 binfinity@qq.com
 ```
 **Wechat：**
 
-```
+```bash
 iabc-5305442
 ```
