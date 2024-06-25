@@ -483,60 +483,66 @@ def Administrators():
             print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
             print("选择无效，请输入正确的序号")
 
-
-load_flowers()  # 加载花卉信息
-# 执行进度条
-Progress_bar()
-print(
-    """
-    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
-
-    の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
-
-    ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
-    """
-)
-# 程序主循环：
-while True:
-
-    # 首页：
+def main():
+    load_flowers()  # 加载花卉信息
+    # 执行进度条
+    Progress_bar()
     print(
         """
-" ……………·～·…οΟ○ の ○Οο…·～·…………… "
+        ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+    
+        の┅∞   欢迎来到 Binfinity FlowerStore    の┅∞ 
+    
+        ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
+        """
+    )
+    # 程序主循环：
 
-1.注册, 2.登录,3.管理员登录,4.退出程序
-         """)
-    # 用户选择1
-    choosefirst = input('请输入您选择的序号：')
-    if choosefirst == '1':
-        print("▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂  ")
 
-        logup()
+    while True:
 
-        print(".*""*.*""*.*""*.*""**""*.*""**""*.*  ")
+        # 首页：
+        print(
+            """
+    " ……………·～·…οΟ○ の ○Οο…·～·…………… "
+    
+    1.注册, 2.登录,3.管理员登录,4.退出程序
+             """)
+        # 用户选择1
+        choosefirst = input('请输入您选择的序号：')
+        if choosefirst == '1':
+            print("▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂  ")
 
-    elif choosefirst == '2':
-        print("▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂  ")
-        if login(1) == 0:
-            break
+            logup()
+
+            print(".*""*.*""*.*""*.*""**""*.*""**""*.*  ")
+
+        elif choosefirst == '2':
+            print("▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂﹍▂  ")
+            if login(1) == 0:
+                break
+            else:
+                Users()
+            print(".*""*.*""*.*""*.*""**""*.*""**""*.*  ")
+        elif choosefirst == '3':
+            if Administrators_login(1) == 0:
+                break
+            else:
+                Administrators()
+
+        elif choosefirst == '4':
+            if esc() == 1:
+                break
+            else:
+                print("程序继续运行")
+
         else:
-            Users()
-        print(".*""*.*""*.*""*.*""**""*.*""**""*.*  ")
-    elif choosefirst == '3':
-        if Administrators_login(1) == 0:
-            break
-        else:
-            Administrators()
+            print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
+            print("选择无效，请输入正确的序号")
 
-    elif choosefirst == '4':
-        if esc() == 1:
-            break
-        else:
-            print("程序继续运行")
+if __name__ == "__main__":
+    main()
 
-    else:
-        print("﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏﹋﹏ ※”  ")
-        print("选择无效，请输入正确的序号")
 
 """
 
