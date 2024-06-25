@@ -18,9 +18,9 @@
 
 ​	程序内置了一个默认的用户：
 
-​		**用户名：**Binfinity
+​		用户名：Binfinity
 
-​		**密码：**050328
+​		密码：050328
 
 ### 用户功能
 
@@ -62,21 +62,13 @@ Binfinity FlowerStore 目前通过命令行界面（CLI）与用户交互。我�
 - 添加新的功能或优化现有功能
 
 请通过 GitHub 的 `Issues` 和 `Pull Requests` 来参与我的项目。
-## 功能简介
-
-- **注册和登录**：用户和管理员可以注册和登录。
-- **查看花卉**：用户和管理员可以查看所有花卉的详细信息。
-- **购买花卉**：用户可以购买花卉并查看购买记录。
-- **搜索花卉**：用户和管理员可以通过花名或花语关键词搜索花卉。
-- **库存管理**：管理员可以查看、添加、更新和删除花卉信息。
-- **进度条显示**：操作执行时会显示进度条。
 
 ## 文件说明
 
 - `flowers.txt`：存储花卉信息的文件。
 - `users.txt`：存储用户信息的文件。
 - `Administrators.txt`：存储管理员信息的文件。
-- `Python_Binfinity_FlowerStorePro.py`：主程序文件，包含所有功能的实现。
+- `Python_Binfinity_FlowerStore.py`：主程序文件，包含所有功能的实现。
 
 ## 环境要求
 
@@ -94,7 +86,7 @@ Binfinity FlowerStore 目前通过命令行界面（CLI）与用户交互。我�
 2. **运行程序**
     
     ```bash
-    python main.py
+    python Python_Binfinity_FlowerStore.py
     ```
     
 3. **功能选择**
