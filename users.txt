@@ -2,3 +2,4 @@
 {"name": "Bin", "passwd": "050328"}
 {"name": "user", "passwd": "123123"}
 {"name": "binfinity", "passwd": "123123"}
+{"name": "Binfinity", "passwd": "2"}
