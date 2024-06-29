@@ -50,7 +50,7 @@ def buy_flower():
     while True:  # 无限循环，直到用户选择不再购买
         name = input("请输入您想购买的花卉名称（或输入'退出'结束购买）：")
         if name.lower() == '退出':  # 提供退出的选项
-            print("感谢您的购买，欢迎下次光临！")
+            print("感谢您的到来，欢迎下次光临！")
             save_flowers()  # 在退出前保存最新的花卉信息
             break  # 退出循环
 
@@ -148,7 +148,6 @@ def update_flower():
                 flower['meaning'] = new_meaning
             break  # 找到并更新后退出循环
 
-    # 保存更新后的花卉信息到文件（假设已实现save_flowers函数）
     save_flowers()
 
     # 显示更新前后的信息比对
