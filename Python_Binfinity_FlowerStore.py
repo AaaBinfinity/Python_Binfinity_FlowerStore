@@ -359,6 +359,27 @@ def login(shutdown):  # shutdown作为强制关闭词，用于输入次数过多
 
         f.close()
 
+def print_user_info(filename='users.txt'):
+    """
+    从给定的文件名中读取用户信息，并打印每个用户的姓名和密码。
+
+    参数:
+    filename (str): 包含用户信息的文件名，默认为'users.txt'。
+    """
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            for line in file:
+                # 去除行尾的换行符
+                line = line.strip()
+                # 解析JSON字符串
+                user_info = json.loads(line)
+                # 输出用户信息
+                print(f"用户名: {user_info['name']}, 密码: {user_info['passwd']}")
+    except FileNotFoundError:
+        print(f"文件 {filename} 未找到。")
+    except json.JSONDecodeError:
+        print("文件内容格式错误，无法解析JSON。")
+
 
 # 退出程序代码
 def esc():
@@ -416,9 +437,9 @@ def Administrators():
     while True:
         print(
             """
-    ！！！=============！！=====！！=========！！=管理员登录=！！===========！！=====！！=======================！！！    
+    ！！！=============！！=========！！=============！！=管理员登录=！！===============！！=====！！===========================！！！    
     
-    1. 查看库存   2. 添加花卉   3. 购买花卉     4. 更新花卉信息    5. 删除花卉   6.添加管理员   7.搜索花卉    8.退出程序           
+    1. 查看库存   2. 添加花卉   3. 购买花卉     4. 更新花卉信息    5. 删除花卉   6.添加管理员   7.搜索花卉   8.输出用户信息    9.退出程序           
             """
         )
         # 用户选择2
@@ -468,13 +489,17 @@ def Administrators():
             # 执行进度条
             Progress_bar()
             Administrators_logup()
+        elif choose2 == "8":
+            print("▂﹍▂﹍▂﹍输出用户信息▂﹍▂﹍▂﹍▂﹍▂")
+            print_user_info()
         elif choose2 == "7":
             print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
 
             # 执行进度条
             Progress_bar()
             search_flower()
-        elif choose2 == "8":
+        elif choose2 == "9":
+            print("▂﹍▂﹍▂﹍退出程序▂﹍▂﹍▂﹍▂﹍▂ ")
             esc()
             return 1
         else:
