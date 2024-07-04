@@ -404,21 +404,21 @@ def Users():
             print("▂﹍▂﹍▂﹍查看所有花卉▂﹍▂﹍▂﹍▂﹍▂  ")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             view_all_products()
             print("=" * 30)  # 分隔线，使信息更清晰
         elif choose == "2":
             print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             buy_flower()
             print("=" * 30)  # 分隔线，使信息更清晰
         elif choose == "3":
             print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             search_flower()
             print("=" * 30)  # 分隔线，使信息更清晰
         elif choose == "4":
@@ -448,13 +448,13 @@ def Administrators():
             print("▂﹍▂﹍▂﹍查看库存▂﹍▂﹍▂﹍▂﹍▂  ")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             view_stock()
         elif choose2 == '2':
             print("▂﹍▂﹍▂﹍添加花卉▂﹍▂﹍▂﹍▂﹍▂ ")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             print("！！！=============！！=====！！======")
             name = input("请输入您想添加的花卉名称")
             print("！！！=============！！=====！！======")
@@ -470,24 +470,24 @@ def Administrators():
         elif choose2 == '3':
             print("▂﹍▂﹍▂﹍购买花卉▂﹍▂﹍▂﹍▂﹍▂")
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             buy_flower()
             print("！！！=============！！=====！！======")
         elif choose2 == '4':
             print("▂﹍▂﹍▂﹍更新花卉▂﹍▂﹍▂﹍▂﹍▂ ")
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             update_flower()
         elif choose2 == '5':
             print("▂﹍▂﹍▂﹍删除花卉▂﹍▂﹍▂﹍▂﹍▂ ")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             delete_flower(name=input("请输入您想要删除的花卉："))
         elif choose2 == '6':
             print("▂﹍▂﹍▂﹍添加管理员▂﹍▂﹍▂﹍▂﹍▂")
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             Administrators_logup()
         elif choose2 == "8":
             print("▂﹍▂﹍▂﹍输出用户信息▂﹍▂﹍▂﹍▂﹍▂")
@@ -496,7 +496,7 @@ def Administrators():
             print("▂﹍▂﹍▂﹍搜索花卉▂﹍▂﹍▂﹍▂﹍▂ ")
 
             # 执行进度条
-            Progress_bar()
+            # Progress_bar()
             search_flower()
         elif choose2 == "9":
             print("▂﹍▂﹍▂﹍退出程序▂﹍▂﹍▂﹍▂﹍▂ ")
@@ -510,7 +510,7 @@ def Administrators():
 def main():
     load_flowers()  # 加载花卉信息
     # 执行进度条
-    Progress_bar()
+    # Progress_bar()
     print(
         """
         ★~☆·☆。~*∴*~★*∴ *·∴~*★*∴*★~☆·☆。~*∴*~★
